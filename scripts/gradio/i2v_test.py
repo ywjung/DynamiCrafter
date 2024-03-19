@@ -47,7 +47,8 @@ class Image2Video():
         if steps > 60:
             steps = 60 
         model = self.model_list[gpu_id]
-        model = model.cuda()
+        # model = model.cuda()
+        model = model.to(torch.device("mps"))
         batch_size=1
         channels = model.model.diffusion_model.out_channels
         frames = model.temporal_length
